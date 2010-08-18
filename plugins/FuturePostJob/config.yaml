@@ -1,0 +1,23 @@
+name: FuturePost Job
+id: FuturePostJob
+key: FuturePostJob
+author_link: http://mt-hacks.com/
+author_name: MT Hacks
+description: A plugin for Movable Type and Melody that publishes scheduled entries via a TheSchwartz job rather than relying on the scheduled task
+version: 0.90
+plugin_link: http://mt-hacks.com/futurepostjob.html
+settings:
+    enable_job:
+        Scope: blog
+        Default: 0
+#blog_config_template:
+#    code: $FuturePostJob::FuturePostJob::App::CMS::blog_config_template
+config_settings:
+    UseJobForFuturePosts:
+        default: 0
+callbacks:
+    MT::Entry::post_save: $FuturePostJob::FuturePostJob::Callbacks::entry_post_save
+task_workers:
+    futurepostjob_publish:
+        label: Publish Future Posts
+        class: FuturePostJob::Worker::Publish
