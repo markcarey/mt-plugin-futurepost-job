@@ -1,0 +1,10 @@
+FuturePost Job
+
+For legacy reasons, Movable Type and Melody  publish future or "scheduled posts" by way of a periodic task. In short, these means that periodically MT will checked to see if there are any entries with a Scheduled status that have come due, and then publish them. A side-effect of this is that in most cases an entry scheduled for 10:30 won't actually publish until 10:46 or 11:15, or even later (depending on your MT configuration and other periodic tasks).
+
+But what if the post is time-sensitive, and you really want that post to live at 10:30?
+
+This plugin aims to address this by creating a "TheSchwartz" job to publish the post. When the entry is saved, a job gets created for the entry, configured to run at desired publishing date and time.  Combine this with running the run-periodic-tasks in daemon mode and scheduled posts should publish very close to the scheduled time.
+
+License
+This plugin is licensed under the same terms as Perl itself.
